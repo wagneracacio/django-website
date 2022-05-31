@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  reminderdb:
+    image: postgres
+    volumes:
+      - ../data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+  reminder:
+    build:
+      context: ..
+      dockerfile: docker/reminder/Dockerfile
+    container_name: reminder
+    image: reminder
+    command: bash -c "python manage.py makemigrations && python manage.py migrate &&gunicorn --workers=9 --bind 0.0.0.0:8090 project.wsgi"
+    volumes:
+      - ..:/code
+    ports:
+      - "8090:8090"
+      - "8099:8000"
+    environment:
+      - DATABASEHOST=reminderdb
+      - DATABASETABLE=${POSTGRES_DB}
+      - DATABASEUSER=${POSTGRES_USER}
+      - DATABASEPASS=${POSTGRES_PASSWORD}
+    

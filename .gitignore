@@ -1,0 +1,6 @@
+project/apps/*/migrations/*
+!project/apps/*/migrations/__init__.py
+data
+.vscode
+.env
+*__pycache__*

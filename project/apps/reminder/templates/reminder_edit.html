@@ -1,0 +1,17 @@
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/reminder_form.css' %}">
+{% endblock head %}
+{% block content %}
+<center>
+    <br><br>
+    <form class="form_reminder" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p class="actions">
+            <input type="submit" value="Save">
+            <a href="{% url 'index' %}">Cancel</a>
+        </p>
+    </form>
+</center>
+{% endblock content %}

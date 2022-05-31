@@ -1,0 +1,38 @@
+body {
+    background: grey;
+}
+.form_reminder {
+    padding: 2%;
+    width: 50%;
+    min-width: 600px;
+    background: rgb(202, 202, 202);
+}
+
+.form_reminder > p {
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+input, textarea {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+}
+.actions input, .actions a{
+    border-radius: 15px;
+    color: white;
+    cursor: pointer;
+    width: 20%;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background: green;
+}
+.actions a {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    background: red;
+    height: 40px;
+    padding-top: 20px;
+}

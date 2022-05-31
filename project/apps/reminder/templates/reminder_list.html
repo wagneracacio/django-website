@@ -1,0 +1,43 @@
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/reminder.css' %}">
+
+{% endblock head %}
+{% block content %}
+    <center>
+        <form class="add_reminder" action="{% url 'adicionar' %}" method="get">
+            {% csrf_token %}
+            <input class="add" type="submit" value="Adicionar">
+        </form>
+    </center>
+    <div class="lembretes">
+        {% for lembrete in lembretes %}
+            <div class="lembrete">
+                <div class="title">
+                    <h1>{{lembrete.title}}</h1>
+                </div>
+                <div class="content">
+                    <p>{{lembrete.message}}</p>
+                </div>
+                <div class="actions">
+                    <div class="edit">
+                        <form class="form_reminder" action="{% url 'edit' lembrete.id %}" method="get">
+                            {% csrf_token %}
+                            <p class="actions">
+                                <input type="submit" value="Edit">
+                            </p>
+                        </form>
+                    </div>
+                    <div class="delete_act">
+                        <form class="form_reminder" action="{% url 'delete' lembrete.id %}" method="get">
+                            {% csrf_token %}
+                            <p class="actions">
+                                <input class="delete" type="submit" value="Delete">
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
