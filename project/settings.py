@@ -8,7 +8,7 @@ PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 
 
-SECRET_KEY = 'django-insecure-c0xu$8sld8-^3tr&@b6ie_%5td_e34cb1t^4s4ww0_g77bp50+'
+SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 DEBUG = False
 
